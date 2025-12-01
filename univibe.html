@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UniVibe Events & Solutions | Ticket Booking</title>
+  <link rel="stylesheet" href="univibe.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">UniVibe<span>.</span></div>
+      <button class="hamburger" id="hamburger">&#9776;</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#tickets">Tickets</a></li>
+        <li><a href="#booking">Book Now</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>SoundWave Festival 2025</h1>
+      <p class="subtitle">Organized by <strong>UniVibe Events & Solutions</strong></p>
+      <p class="event-info">📅 Sat, Dec 20, 2025 &nbsp; • &nbsp; 📍 Addis Ababa Convention Center</p>
+      <a href="#booking" class="btn btn-primary hero-btn">🎟️ Book Your Ticket</a>
+    </div>
+  </section>
+
+  <!-- Ticket Options -->
+  <section id="tickets" class="tickets-section">
+    <div class="container">
+      <h2 class="section-title">Choose Your Experience</h2>
+      <div class="tickets-grid">
+        <!-- Regular -->
+        <div class="ticket-card">
+          <h3>🎟️ Regular</h3>
+          <p class="price">150 <span>ETB</span></p>
+          <ul class="features">
+            <li>General Seating</li>
+            <li>Access to Main Stage</li>
+            <li>1 Drink Coupon</li>
+          </ul>
+          <button class="btn btn-outline" data-ticket="regular" data-price="150">Buy Now</button>
+        </div>
+        <!-- VIP -->
+        <div class="ticket-card featured">
+          <div class="badge">Best Value</div>
+          <h3>🌟 VIP</h3>
+          <p class="price">300 <span>ETB</span></p>
+          <ul class="features">
+            <li>Premium Seating (Front Rows)</li>
+            <li>Fast-Track Entry</li>
+            <li>2 Drink Coupons + Snack Box</li>
+          </ul>
+          <button class="btn btn-primary" data-ticket="vip" data-price="300">Buy Now</button>
+        </div>
+        <!-- VVIP -->
+        <div class="ticket-card">
+          <h3>👑 VVIP</h3>
+          <p class="price">500 <span>ETB</span></p>
+          <ul class="features">
+            <li>Exclusive Lounge Access</li>
+            <li>Meet & Greet with Artists</li>
+            <li>Complimentary Dinner & Drinks</li>
+          </ul>
+          <button class="btn btn-outline" data-ticket="vvip" data-price="500">Buy Now</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking Form -->
+  <section id="booking" class="booking-section">
+    <div class="container">
+      <h2 class="section-title">Secure Your Spot</h2>
+      <div class="booking-container">
+        <form id="bookingForm" class="booking-form">
+          <div class="form-group">
+            <label for="fullName">Full Name *</label>
+            <input type="text" id="fullName" required />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number *</label>
+            <input type="tel" id="phone" required placeholder="+251..." />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" />
+          </div>
+          <div class="form-group">
+            <label for="ticketType">Ticket Type *</label>
+            <select id="ticketType" required>
+              <option value="">— Select —</option>
+              <option value="regular">🎟️ Regular — 150 ETB</option>
+              <option value="vip">🌟 VIP — 300 ETB</option>
+              <option value="vvip">👑 VVIP — 500 ETB</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="quantity">Quantity *</label>
+            <input type="number" id="quantity" min="1" max="10" value="1" required />
+          </div>
+          <div class="summary">
+            <p>Total: <span id="totalPrice">150</span> ETB</p>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Proceed to Payment</button>
+        </form>
+
+<!-- Toast Notification (hidden by default) -->
+<div id="paymentSection" class="payment-section hidden">
+  <h3>💳 Complete Your Payment</h3>
+  <p>Please scan a QR code using your banking app and confirm below.</p>
+
+  <div class="payment-methods">
+    <div class="payment-option">
+      <h4>📱 TeleBirr</h4>
+      <img src="TELLE.JPG" alt="TeleBirr QR Code" class="qr-code">
+      <button class="scan-btn" data-method="TeleBirr">✓ I’ve Scanned & Paid via TeleBirr</button>
+      <p><strong>Account:</strong> UniVibe Events</p>
+    </div>
+    <div class="payment-option">
+      <h4>🏦 CBE Birr</h4>
+      <img src="CBE.JPG" alt="CBE Birr QR Code" class="qr-code">
+      <button class="scan-btn" data-method="CBE">✓ I’ve Scanned & Paid via CBE</button>
+      <p><strong>Account Name:</strong> UniVibe Events & Solutions</p>
+    </div>
+  </div>
+
+  <p class="note" style="font-size:0.9rem; margin-top:1.5rem;">
+  </p>
+</div>
+        <div id="confirmationSection" class="confirmation-section hidden">
+          <div class="confirmation-card">
+            <div class="checkmark">✓</div>
+            <h3>Booking Confirmed!</h3>
+            <p>Thank you for choosing UniVibe Events & Solutions.</p>
+            <div class="booking-details">
+              <p><strong>Name:</strong> <span id="confName"></span></p>
+              <p><strong>Phone:</strong> <span id="confPhone"></span></p>
+              <p><strong>Ticket:</strong> <span id="confTicket"></span></p>
+              <p><strong>Quantity:</strong> <span id="confQty"></span></p>
+              <p><strong>Total Paid:</strong> <span id="confTotal"></span> ETB</p>
+            </div>
+            <p class="note">
+              📩 A confirmation SMS/email will be sent shortly.  
+              Bring your ID and booking reference on event day.
+            </p>
+            <button id="newBookingBtn" class="btn btn-outline">Book Another Ticket</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 UniVibe Events & Solutions. All rights reserved.</p>
+      <p>Contact: info@univibe.et | +251 9X XXX XXXX</p>
+    </div>
+  </footer>
+
+  <script src="univibe.js"></script>
+</body>
+</html>
